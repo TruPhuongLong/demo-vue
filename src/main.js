@@ -3,6 +3,26 @@ import App from './App.vue'
 import Label from './components/Label.vue'
 import Test from './components/Test'
 import Com from './components/Test-component.vue'
+import Vuex from 'vuex';
+
+Vue.use(Vuex)
+
+let store = new Vuex.Store({
+  state: {
+    number: 0
+  },
+  mutations: {
+    increment(state){
+      state.number++
+    }
+  }
+})
+
+store.commit('increment')
+console.log(store.state.number)
+
+
+
 
 Vue.filter('capital', string => {
   return string.toUpperCase();
@@ -63,7 +83,13 @@ Vue.component('blabber', {
 
 //pass to props:
 Vue.component('abc', {
-  template: `<p>hi every body, im {{yourName || 'no name'}}</p>`,
+  template: `
+  <div>
+    <p>hi every body, im {{yourName || 'no name'}}</p>
+    <h1>{{this.$store.state.number}}</h1>
+    <button @click="inc">increment</button>
+  </div>
+  `,
   props: {
     yourName: String
   },
@@ -77,12 +103,18 @@ Vue.component('abc', {
   },
   mounted(){
     bus.$emit('data', 'this is data')
+  }, 
+  methods: {
+    inc(){
+      this.$store.commit('increment')
+    }
   }
 })
 
 var bus = new Vue()
 new Vue({
   el: '#app',
+  store,
   render: h => h(Com)
 })
 
