@@ -12,7 +12,7 @@ Vue.filter('capital', string => {
 Vue.component('hi', {
   template: `
     <div>
-      <h1>welcome here {{name}}</h1>
+      <h1>welcome here {{name}}, your level: {{level}}</h1>
     </div>
   `,
   // props: ['name']
@@ -20,7 +20,14 @@ Vue.component('hi', {
   //   name: Number
   // }
   props: {
-    name: [Number, String]
+    name: [Number, String], 
+    level: {
+      required: true,
+      default: 0,
+      validator (value) {
+        return value >= 0 && value <= 3
+      }
+    }
   }
 })
 
@@ -30,6 +37,50 @@ Vue.component('r', {
   render: h => h('p', 'hi im new')
 })
 
+Vue.component('blabber', {
+  template: "<p>{{dialogue[currentLine%dialogue.length]}}</p>",
+  data () {
+    return {
+      currentLine: 0,
+      dialogue: [
+        'hello',
+        'how are you?',
+        'fine thanks',
+        'let\'s go drink!',
+        'alright, where?',
+        'to hello\'s bar',
+        'hello?'
+      ] 
+    }
+  },
+  mounted () {
+    setInterval(() => {
+      this.currentLine++
+    }, 2000) 
+  }
+})
+
+
+//pass to props:
+Vue.component('abc', {
+  template: `<p>hi every body, im {{yourName || 'no name'}}</p>`,
+  props: {
+    yourName: String
+  },
+  // data: {
+  //   _name: this.yourName || 'no name'
+  // }
+  created(){
+    bus.$on('data', (data) => {
+      console.log(data)
+    })
+  },
+  mounted(){
+    bus.$emit('data', 'this is data')
+  }
+})
+
+var bus = new Vue()
 new Vue({
   el: '#app',
   render: h => h(Com)
