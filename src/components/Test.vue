@@ -9,6 +9,12 @@
         <transition name="toggle">
             <p v-show="show">toogle</p>
         </transition>
+
+        <hr />
+        filter array:
+        <ul>
+            <li v-for="e in even(array)">{{e}}</li>
+        </ul>
         
 
 
@@ -20,7 +26,7 @@
 export default {
     data(){
         return {
-            array: [1,5,6],
+            array: [1,5,6, 4, 8],
             side: 10,
             show: true
         }
@@ -38,6 +44,10 @@ export default {
             if(this.show)
                 this.show = false;
             else this.show = true;
+        },
+
+        even(array){
+            return array.filter(e => e % 2 == 0);
         }
     }
 
@@ -58,7 +68,7 @@ export default {
     }
 
     .toggle-enter-active{
-        transition: 2s;
+        transition: all 2s ease-in;
     }
 </style>
 
