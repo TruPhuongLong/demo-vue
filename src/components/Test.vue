@@ -24,12 +24,19 @@
             <p v-if="show == false" key="2">element 2</p>
         </transition>
         </div> -->
-        <hr />
+        <!-- <hr />
         <div >
             <transition name="slide" >
                 <p :key="tran[index%(tran.length)]">{{tran[index%(tran.length)]}}</p>
             </transition>
-        </div>
+        </div> -->
+        <hr />
+        transition group:
+        <button @click="tran.pop()">pop</button>
+        <button @click="tran.push('ok man')">push</button>
+        <transition-group name='slide'>
+            <p v-for="e in tran" :key="e">{{e}}</p>
+        </transition-group>
         
 
 
@@ -110,11 +117,10 @@ export default {
     transform: translateX(-200px)
 }
 
-p {
-  margin: 0;
-  position: absolute;
-  font-size: 3em;
+.slide-move{
+    transition: 1s;
 }
+
 
 .container{
     width: 80%;
