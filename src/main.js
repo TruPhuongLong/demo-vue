@@ -7,3 +7,8 @@ new Vue({
   el: '#app',
   render: h => h(Test)
 })
+
+
+Vue.filter('capital', string => {
+  return string.toUpperCase();
+})
