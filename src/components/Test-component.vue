@@ -1,3 +1,6 @@
+<script>
+import './showlist.js';
+</script>
 
 
 <template>
@@ -12,9 +15,10 @@
     <blabber></blabber>
     <blabber></blabber> -->
 
-    <abc your-name="Long"></abc>
+    <!-- <abc your-name="Long"></abc> -->
     <!-- <abc yourName="Gin"></abc> -->
 
+    <show-list></show-list>
     
 </div>
 </template>
@@ -22,7 +26,6 @@
 
 <script>
 export default {
-    
 }
 
 </script>
