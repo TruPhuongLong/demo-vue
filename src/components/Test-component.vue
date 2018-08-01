@@ -1,6 +1,4 @@
-<script>
-import './showlist.js';
-</script>
+
 
 
 <template>
@@ -12,7 +10,7 @@ import './showlist.js';
     <r></r>
 
 
-    <blabber></blabber>
+    <blabber></blabber
     <blabber></blabber> -->
 
     <!-- <abc your-name="Long"></abc> -->
@@ -25,7 +23,9 @@ import './showlist.js';
 
 
 <script>
+import show from './showlist.js';
 export default {
+    name: 'testc',
 }
 
 </script>

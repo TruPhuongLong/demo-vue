@@ -1,16 +1,16 @@
 import Vue from 'vue'
-import App from './App.vue'
-import Label from './components/Label.vue'
-import Test from './components/Test'
-import Com from './components/Test-component.vue'
-import Vuex from 'vuex';
-// import ShowList from './components/showlist';
+// import App from './App.vue'
+// import Label from './components/Label.vue'
+// import Test from './components/Test'
+// import Com from './components/Test-component.vue'
+// import Vuex from 'vuex';
+import p1 from './components/page1.vue'
 
 
 
 new Vue({
   el: '#app',
-  render: h => h(Com)
+  render: h => h(p1)
 })
 
 
