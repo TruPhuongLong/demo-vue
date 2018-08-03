@@ -1,20 +1,21 @@
 <template>
   <div id="app">
-    <middle-test :number="number"></middle-test>
+      <button @click="alert">alert props number</button>
+    <labelx :number.sync="number" ></labelx>
   </div>
 </template>
 
 <script>
-import middleTest from './components/middletest.vue'
+import Labelx from "./Label.vue";
 
 export default {
-  components: { middleTest },
-  
-  data() {
-    return {
-      number: 5
-    };
-  }
+  components: {Labelx },
+  methods: {
+    alert() {
+      window.alert(this.number);
+    }
+  },
+  props: ['number']
   
 };
 </script>
