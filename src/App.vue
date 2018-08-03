@@ -2,15 +2,20 @@
   <div id="app">
     work
     <hello name="Long" @age="age"></hello>
+    <hr />
+    <bye></bye>
+    <hr />
+    <labelx></labelx>
   </div>
 </template>
 
 <script>
 
 import hello from './components/composit.js'
+import Labelx from './components/Label.vue'
 
 export default {
-  components: {hello},
+  components: {hello, Labelx},
   methods: {
     age(n){
       window.alert(n)
