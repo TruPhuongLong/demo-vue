@@ -1,6 +1,9 @@
 <template>
   <div id="app">
-      <button @click="alert">alert props number</button>
+    <button @click="alert">alert props number</button>
+      <hr />
+          <labelx :number.sync="number" ></labelx>
+<hr />
     <labelx :number.sync="number" ></labelx>
   </div>
 </template>
@@ -9,14 +12,18 @@
 import Labelx from "./Label.vue";
 
 export default {
-  components: {Labelx },
+  components: { Labelx },
   methods: {
     alert() {
       window.alert(this.number);
     }
   },
-  props: ['number']
-  
+//  props: ["number"],
+// data(){
+//     return {
+//         number: 5
+//     }
+// },
 };
 </script>
 

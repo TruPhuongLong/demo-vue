@@ -5,6 +5,7 @@ import App from './App.vue'
 // import Com from './components/Test-component.vue'
 // import Vuex from 'vuex';
 // import p1 from './components/page1.vue'
+// import Project1 from './project1.vue'
 
 
 
