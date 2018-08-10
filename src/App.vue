@@ -2,25 +2,43 @@
   <div id="app">
     
         hi, im {{number}}
-        <button @click="view = view === 'v-a' ? 'v-b' : 'v-a'">toggle</button>
-        <transition name="fade" mode="out-in">
-          <component :is="view"></component>
-        </transition>
+        <button @click="add">Add</button>
+        <button @click="shift">shift</button>
+        <button @click="shuffle">shuffle</button>
+
+<transition-group name="fade" tag="ul">
+        <!-- <ul> -->
+          <li v-for="item in items" :key="item">{{item}}</li>
+        <!-- </ul> -->
+</transition-group>
 
   </div>
 </template>
 
 <script>
+directives: {
+  yellow: {
+    inserted: function(el){
+      el.style.color = 'yellow'
+    }
+  }
+}
 export default {
   data() {
     return {
-      number: 10,
-      view: "v-a"
+      items: [3, 5, 6]
     };
   },
-  components: {
-    "v-a": { template: `<div>v-a</div>` },
-    "v-b": { template: `<div>v-b</div>` }
+  methods: {
+    add: function() {
+      this.items.push(Math.floor(Math.random() * 100));
+    },
+    shift: function() {
+      this.items.shift();
+    },
+    shuffle: function () {
+      this.items = _.shuffle(this.items)
+    }
   }
 };
 </script>
@@ -35,12 +53,12 @@ export default {
   margin-top: 60px;
 }
 
-.fade-enter-active, .fade-leave-active{
+.fade-enter-active,
+.fade-leave-active {
   transition: 0.5s;
 }
-.fade-enter, .fade-leave-to{
+.fade-enter,
+.fade-leave-to {
   opacity: 0;
 }
-
-
 </style>
