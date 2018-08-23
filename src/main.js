@@ -6,12 +6,28 @@ import App from './App.vue'
 // import Vuex from 'vuex';
 // import p1 from './components/page1.vue'
 // import Project1 from './project1.vue'
+import Vuex from 'vuex'
+import TestVuex from './testvuex'
 
+
+Vue.use(Vuex)
+
+const store = new Vuex.Store({
+  state: {
+    count: 0
+  },
+  mutations: {
+    increment (state) {
+      state.count++
+    }
+  }
+})
 
 
 new Vue({
   el: '#app',
-  render: h => h(App)
+  store,
+  render: h => h(TestVuex)
 })
 
 
@@ -57,7 +73,7 @@ new Vue({
 //   //   name: Number
 //   // }
 //   props: {
-//     name: [Number, String], 
+//     name: [Number, String],
 //     level: {
 //       required: true,
 //       default: 0,
@@ -68,7 +84,7 @@ new Vue({
 //   }
 // })
 
-// //component 
+// //component
 // Vue.component('r', {
 //   functional: true,
 //   render: h => h('p', 'hi im new')
@@ -87,13 +103,13 @@ new Vue({
 //         'alright, where?',
 //         'to hello\'s bar',
 //         'hello?'
-//       ] 
+//       ]
 //     }
 //   },
 //   mounted () {
 //     setInterval(() => {
 //       this.currentLine++
-//     }, 2000) 
+//     }, 2000)
 //   }
 // })
 
@@ -120,7 +136,7 @@ new Vue({
 //   },
 //   mounted(){
 //     bus.$emit('data', 'this is data')
-//   }, 
+//   },
 //   methods: {
 //     inc(){
 //       this.$store.commit('increment')
